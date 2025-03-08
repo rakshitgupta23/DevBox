@@ -18,14 +18,14 @@ const Navbar = () => {
       {/* logo */}
       <p className="hidden md:block mt-1  text-white font-extrabold text-3xl font-splash " >DevBox</p>
       <div className="justify-center sm:justify-around md:justify-end w-full md:ml-auto flex">
-      <Link href="/">
+      <Link href="/" legacyBehavior>
           <a
             className={` mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-3 md:px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0`}
           >
             Home
           </a>
         </Link>
-        <Link href="/editor">
+        <Link href="/editor" legacyBehavior>
           <a
             className={` mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-3 md:px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0`}
           >
@@ -34,7 +34,7 @@ const Navbar = () => {
         </Link>
         {status === "authenticated" && (
           <>
-            <Link href="/dashboard">
+            <Link href="/dashboard" legacyBehavior>
               <a
                 className={` mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-3 md:px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0 
                 `}
@@ -79,7 +79,7 @@ const Navbar = () => {
           </button>
         ) : (
           <>
-            <Link href="/auth/login">
+            <Link href="/auth/login" legacyBehavior>
               <a
                 className={` mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0 
               `}
@@ -87,7 +87,7 @@ const Navbar = () => {
                 Log In
               </a>
             </Link>
-            <Link href="/auth/signup">
+            <Link href="/auth/signup" legacyBehavior>
               <a
                 className={` mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0 
               `}

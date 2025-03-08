@@ -138,7 +138,7 @@ const Dashboard = (props) => {
             Save your codes to access them from your Dashboard!
           </p>
           <div className="text-center mt-4">
-            <Link href="/editor">
+            <Link href="/editor" legacyBehavior>
               <a className="text-xl font-bold border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0">
                 Start Here
               </a>
