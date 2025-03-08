@@ -132,13 +132,13 @@ const Dashboard = (props) => {
   return (
     <div className="p-4">
       <p className="text-5xl mt-6 font-black text-start">Your Dashboard</p>
-      {!updatedCodes.length && (
+      {!updatedCodes?.length && (
         <>
           <p className="text-xl mt-4 md:text-3xl font-black text-center">
             Save your codes to access them from your Dashboard!
           </p>
           <div className="text-center mt-4">
-            <Link href="/">
+            <Link href="/editor">
               <a className="text-xl font-bold border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0">
                 Start Here
               </a>

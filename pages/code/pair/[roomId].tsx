@@ -7,17 +7,17 @@ import { authOptions } from "../../api/auth/[...nextauth]";
 import socketIOClient from "socket.io-client";
 
 const PairCodePage = (props) => {
-  const [code,setCode] = useState<string>("");
-  const socket = socketIOClient("localhost:3001",{
-    query:{
-      roomId:props.roomId
-    }
+  const [code, setCode] = useState<string>("");
+  const socket = socketIOClient("localhost:3001", {
+    query: {
+      roomId: props.roomId,
+    },
   });
 
-    socket.on("CODE_CHANGE",(newCode)=>{
-      console.log("EVENT RECEIVED",newCode.data);
-      setCode(newCode.data);
-    })
+  socket.on("CODE_CHANGE", (newCode) => {
+    console.log("EVENT RECEIVED", newCode.data);
+    setCode(newCode.data);
+  });
 
   return (
     <>
@@ -54,11 +54,11 @@ export async function getServerSideProps(context) {
     const { roomId } = context.params;
 
     return {
-      props:{
-        roomId:roomId
-      }
-    }
-  }catch(err){
+      props: {
+        roomId: roomId,
+      },
+    };
+  } catch (err) {
     console.log(err);
   }
 }

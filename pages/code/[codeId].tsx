@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
 import { unstable_getServerSession } from "next-auth";
 import React from "react";
-import Landing, { LandingProps } from "..";
+import Landing, { LandingProps } from "../../components/Landing";
 import { connectToDatabase } from "../../lib/mongodb";
 import { authOptions } from "../api/auth/[...nextauth]";
 

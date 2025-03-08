@@ -18,11 +18,18 @@ const Navbar = () => {
       {/* logo */}
       <p className="hidden md:block mt-1  text-white font-extrabold text-3xl font-splash " >DevBox</p>
       <div className="justify-center sm:justify-around md:justify-end w-full md:ml-auto flex">
-        <Link href="/">
+      <Link href="/">
           <a
-            className={` mx-4 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-3 md:px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0`}
+            className={` mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-3 md:px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0`}
           >
             Home
+          </a>
+        </Link>
+        <Link href="/editor">
+          <a
+            className={` mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-3 md:px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0`}
+          >
+            Editor
           </a>
         </Link>
         {status === "authenticated" && (
@@ -74,7 +81,7 @@ const Navbar = () => {
           <>
             <Link href="/auth/login">
               <a
-                className={` mx-4 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0 
+                className={` mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0 
               `}
               >
                 Log In
@@ -82,7 +89,7 @@ const Navbar = () => {
             </Link>
             <Link href="/auth/signup">
               <a
-                className={` mx-4 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0 
+                className={` mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0 
               `}
               >
                 Sign Up

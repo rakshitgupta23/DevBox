@@ -47,7 +47,7 @@ const Signup = () => {
         callbackUrl: "http://localhost:3000",
         redirect: false,
       }).then(() => {
-        Router.push("/");
+        Router.push("/editor");
       });
     }
     setProcessing(false);

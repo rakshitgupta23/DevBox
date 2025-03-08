@@ -13,7 +13,7 @@ const Login = () => {
 
   useEffect(() => {
     if (status === "authenticated") {
-      Router.push("/");
+      Router.push("/editor");
     }
   }, [status]);
 
