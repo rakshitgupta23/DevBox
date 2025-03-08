@@ -99,7 +99,10 @@ const Dashboard = (props) => {
   const { codes } = props;
   const [updatedCodes, setUpdatedCodes] = useState(codes);
 
-  const handleDelete = async (codeId) => {
+  const handleDelete = async (e, codeId) => {
+    e.preventDefault();  // Prevent default behavior
+    e.stopPropagation(); // Stop event from bubbling up
+    
     const confirmDelete = window.confirm("Are you sure you want to delete this code?");
     if (!confirmDelete) return;
 
@@ -110,7 +113,7 @@ const Dashboard = (props) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: props.userEmail, // Assuming you have the user's email
+          email: props.userEmail,
           codeId: codeId,
         }),
       });
@@ -148,23 +151,23 @@ const Dashboard = (props) => {
       )}
       <div className="flex flex-col md:flex-row justify-start mt-12 w-full md:w-10/12 mx-auto">
         {updatedCodes?.map((code, idx) => (
-          <Link href={`/code/${code._id}`} key={idx}>
-          <div className="flex flex-col mb-4 md:mb-0 md:mx-8 cursor-pointer p-4 w-full md:w-5/12 lg:w-4/12 xl:w-3/12 h-52 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0">
-            <p className="text-3xl pb-1 text-center font-bolder border-b-2 border-black border-solid">
-              {code.title}
-            </p>
-            <p className="text-lg mt-4">{code.description}</p>
-            <p className="mt-auto text-md ml-auto">{new Date(code.timestamp).toDateString()}</p>
+          <div key={idx} className="flex flex-col mb-4 md:mb-0 md:mx-8 p-4 w-full md:w-5/12 lg:w-4/12 xl:w-3/12 h-52 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0">
+            <Link href={`/code/${code._id}`}>
+              <div className="cursor-pointer">
+                <p className="text-3xl pb-1 text-center font-bolder border-b-2 border-black border-solid">
+                  {code.title}
+                </p>
+                <p className="text-lg mt-4">{code.description}</p>
+                <p className="mt-auto text-md ml-auto">{new Date(code.timestamp).toDateString()}</p>
+              </div>
+            </Link>
             <button
-              onClick={(e) => {e.stopPropagation();
-              handleDelete(code._id)}}
+              onClick={(e) => handleDelete(e, code._id)}
               className="border-t-2 border-black border-solid pt-1 mt-4 text-red-500 hover:text-red-700"
             >
               Delete
             </button>
-
           </div>
-          </Link>
         ))}
       </div>
     </div>
@@ -214,4 +217,3 @@ export async function getServerSideProps(context) {
     return { props: { userEmail: "" } };
   }
 }
-
