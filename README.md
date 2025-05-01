@@ -24,6 +24,27 @@ DevBox is a web-based integrated development environment (IDE) that allows users
 - **Backend**: Node.js, Express
 - **Database**: MongoDB
 
+## 📷 Screenshots
+
+**Landing Page**
+
+![Screenshot 2025-04-30 155232](https://github.com/user-attachments/assets/c8085119-2407-4026-b78f-1b0f63f48b97)
+
+
+**Editor**
+
+![Screenshot 2025-04-30 155339](https://github.com/user-attachments/assets/2258dd23-74b4-4a74-9720-09db96fa0784)
+
+
+**Dashboard**
+
+![Screenshot 2025-04-30 160252](https://github.com/user-attachments/assets/299b04fd-80b9-4273-9dfc-35384eb48319)
+
+**SignUp**
+
+![image](https://github.com/user-attachments/assets/d9c4434e-6dc7-4177-b2ec-ca7afe46d344)
+
+
 ## Getting Started
 
 To run DevBox locally, follow these steps:
