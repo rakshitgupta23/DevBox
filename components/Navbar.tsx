@@ -3,10 +3,12 @@ import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { UUID } from "bson";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   const { status, data } = useSession();
   const [loggingOut, setLoggingOut] = useState<boolean>(false);
+  const router = useRouter();
 
   const handleSignout = async () => {
     setLoggingOut(true);
@@ -16,29 +18,30 @@ const Navbar = () => {
   return (
     <div className="flex w-full p-4 py-2 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
       {/* logo */}
-      <p className="hidden md:block mt-1  text-white font-extrabold text-3xl font-splash " >DevBox</p>
+      <p className="hidden md:block mt-1  text-white font-extrabold text-3xl font-splash ">
+        DevBox
+      </p>
       <div className="justify-center sm:justify-around md:justify-end w-full md:ml-auto flex">
-      <Link href="/" legacyBehavior>
-          <a
-            className={` mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-3 md:px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0`}
-          >
-            Home
-          </a>
-        </Link>
-        <Link href="/editor" legacyBehavior>
-          <a
-            className={` mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-3 md:px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0`}
-          >
-            Editor
-          </a>
-        </Link>
-        {status === "authenticated" && (
+        {/* Hide Home button on Home page */}
+        {router.pathname !== "/" && (
+          <Link href="/" legacyBehavior>
+            <a className="mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-3 md:px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0">
+              Home
+            </a>
+          </Link>
+        )}
+        {/* Hide "Editor" when on the /editor page */}
+        {router.pathname !== "/editor" && !router.pathname.startsWith("/code/") &&  (
+          <Link href="/editor" legacyBehavior>
+            <a className="mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-3 md:px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0">
+              Editor
+            </a>
+          </Link>
+        )}
+        {status === "authenticated" && router.pathname !== "/dashboard" && (
           <>
             <Link href="/dashboard" legacyBehavior>
-              <a
-                className={` mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-3 md:px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0 
-                `}
-                >
+              <a className="mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-3 md:px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0">
                 Dashboard
               </a>
             </Link>
@@ -79,22 +82,22 @@ const Navbar = () => {
           </button>
         ) : (
           <>
-            <Link href="/auth/login" legacyBehavior>
-              <a
-                className={` mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0 
-              `}
-              >
-                Log In
-              </a>
-            </Link>
-            <Link href="/auth/signup" legacyBehavior>
-              <a
-                className={` mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0 
-              `}
-              >
-                Sign Up
-              </a>
-            </Link>
+            {/* Hide Login button on Login page */}
+            {router.pathname !== "/auth/login" && (
+              <Link href="/auth/login" legacyBehavior>
+                <a className="mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0">
+                  Log In
+                </a>
+              </Link>
+            )}
+            {/* Hide Signup button on Signup page */}
+            {router.pathname !== "/auth/signup" && (
+              <Link href="/auth/signup" legacyBehavior>
+                <a className="mx-2 border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)] px-4 py-2 hover:shadow transition duration-200 bg-white flex-shrink-0">
+                  Sign Up
+                </a>
+              </Link>
+            )}
           </>
         )}
       </div>

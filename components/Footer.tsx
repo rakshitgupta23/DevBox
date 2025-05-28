@@ -31,12 +31,12 @@ function Footer() {
                     >
                         Editor
                     </button>
-                    {/* <button
+                    <button
                         onClick={() => handleNavigation("/about")}
                         className="text-white hover:underline"
                     >
                         About Us
-                    </button> */}
+                    </button>
                 </div>
 
                 {/* Social Icons (placeholder) */}
